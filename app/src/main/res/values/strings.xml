@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Login_Signup</string>
+    <string name="login">ورود کاربران</string>
+    <string name="enter_user">نام کاربری</string>
+    <string name="enter_password">رمز عبور</string>
+    <string name="login_user">ورود</string>
+    <string name="sign_up">ثبت نام</string>
+    <string name="enter_password_replace">تکرار رمز عبور</string>
+    <string name="back">انصراف</string>
+    <string name="exit">خروج</string>
+    <string name="error_password">رمز عبور باید بیش از هشت کاراکتر باشد</string>
+    <string name="error_username">نام کاربری باید بیش از پنج کاراکتر باشد</string>
+    <string name="empty_field">لطفا فیلد را پر کنید</string>
+    <string name="password_checked">مقدار فیلد های رمز عبور باید یکسان باشد</string>
+</resources>
