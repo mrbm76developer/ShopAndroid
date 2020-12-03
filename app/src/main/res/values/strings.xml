@@ -12,4 +12,5 @@
     <string name="error_username">نام کاربری باید بیش از پنج کاراکتر باشد</string>
     <string name="empty_field">لطفا فیلد را پر کنید</string>
     <string name="password_checked">مقدار فیلد های رمز عبور باید یکسان باشد</string>
+    <string name="no_username">کاربری با این نام وجود ندارد</string>
 </resources>

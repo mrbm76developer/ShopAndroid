@@ -44,104 +44,102 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/edtUserNameSingUp"
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtUserNameSingUpLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="45dp"
-                android:layout_marginTop="40dp"
-                android:backgroundTint="@android:color/white"
-                android:drawableEnd="@drawable/ic_person"
-                android:drawablePadding="8dp"
-                android:fontFamily="@font/bkoodak"
-                android:gravity="right"
-                android:hint="@string/enter_user"
-                android:textColor="@android:color/white"
-                android:textColorHint="@android:color/white"
-                android:textSize="15dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginHorizontal="20dp"
+                app:counterEnabled="true"
+                app:counterMaxLength="20"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imgSingUp" />
+                app:layout_constraintTop_toBottomOf="@id/imgSingUp">
 
-            <TextView
-                android:id="@+id/txtErrorUserNameSignUp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="@string/error_username"
-                android:textColor="@color/yellow"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.809"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/edtUserNameSingUp" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtUserNameSingUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:backgroundTint="@android:color/white"
+                    android:drawableEnd="@drawable/ic_person"
+                    android:drawablePadding="8dp"
+                    android:fontFamily="@font/bkoodak"
+                    android:gravity="right"
+                    android:hint="@string/enter_user"
+                    android:inputType="text|textPersonName"
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@android:color/white"
+                    android:textSize="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imgLogin" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:id="@+id/edtPasswordSignUp"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtPasswordSingUpLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="45dp"
-                android:layout_marginTop="15dp"
-                android:backgroundTint="@android:color/white"
-                android:drawableEnd="@drawable/ic_baseline_vpn_key_24"
-                android:drawablePadding="8dp"
-                android:fontFamily="@font/bkoodak"
-                android:gravity="end"
-                android:hint="@string/enter_password"
-                android:inputType="textPassword"
-                android:textColor="@android:color/white"
-                android:textColorHint="@android:color/white"
-                android:textSize="15dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginHorizontal="20dp"
+                app:counterEnabled="true"
+                app:counterMaxLength="20"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/edtUserNameSingUp" />
+                app:layout_constraintTop_toBottomOf="@id/edtUserNameSingUpLayout">
 
-            <TextView
-                android:id="@+id/txtErrorPasswordSignUp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="@string/error_password"
-                android:textColor="@color/yellow"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.809"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/edtPasswordSignUp" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtPasswordSingUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:backgroundTint="@android:color/white"
+                    android:drawableEnd="@drawable/ic_baseline_vpn_key_24"
+                    android:drawablePadding="8dp"
+                    android:fontFamily="@font/bkoodak"
+                    android:gravity="right"
+                    android:hint="@string/enter_password"
+                    android:inputType="textPassword"
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@android:color/white"
+                    android:textSize="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imgLogin" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:id="@+id/edtPasswordReplace"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtPasswordReplaceSingUpLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="45dp"
-                android:layout_marginTop="16dp"
-                android:backgroundTint="@android:color/white"
-                android:drawableEnd="@drawable/ic_baseline_vpn_key_24"
-                android:drawablePadding="8dp"
-                android:fontFamily="@font/bkoodak"
-                android:gravity="end"
-                android:hint="@string/enter_password_replace"
-                android:inputType="textPassword"
-                android:textColor="@android:color/white"
-                android:textColorHint="@android:color/white"
-                android:textSize="15dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginHorizontal="20dp"
+                app:counterEnabled="true"
+                app:counterMaxLength="20"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/edtPasswordSignUp" />
+                app:layout_constraintTop_toBottomOf="@id/edtPasswordSingUpLayout">
 
-            <TextView
-                android:id="@+id/txtErrorPasswordReplaceSignUp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="@string/error_password"
-                android:textColor="@color/yellow"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.809"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/edtPasswordReplace" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtPasswordReplaceSingUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:backgroundTint="@android:color/white"
+                    android:drawableEnd="@drawable/ic_baseline_vpn_key_24"
+                    android:drawablePadding="8dp"
+                    android:fontFamily="@font/bkoodak"
+                    android:gravity="right"
+                    android:hint="@string/enter_password_replace"
+                    android:inputType="textPassword"
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@android:color/white"
+                    android:textSize="15dp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/btnSignUp"
+                android:id="@+id/btnSignUp2"
                 android:layout_width="200dp"
                 android:layout_height="50dp"
                 android:layout_margin="20dp"
@@ -152,7 +150,7 @@
                 android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txtErrorPasswordReplaceSignUp" />
+                app:layout_constraintTop_toBottomOf="@id/edtPasswordReplaceSingUpLayout" />
 
             <Button
                 android:id="@+id/btnBack"
@@ -166,7 +164,7 @@
                 android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btnSignUp" />
+                app:layout_constraintTop_toBottomOf="@id/btnSignUp2" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
