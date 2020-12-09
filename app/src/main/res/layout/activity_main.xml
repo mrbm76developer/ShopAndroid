@@ -1,26 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/txt1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.denzcoskun.imageslider.ImageSlider
+                android:id="@+id/imgSliderMainActivity"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                app:auto_cycle="true"
+                app:corner_radius="20"
+                app:delay="0"
+                app:error_image="@drawable/mobils1"
+                app:period="1000" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imgMobileMainActivity"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="0.33"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/mobils1" />
+
+                <ImageView
+                    android:id="@+id/imgLaptopMainActivity"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="0.33"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/mobils1" />
+
+                <ImageView
+                    android:id="@+id/imgCameraMainActivity"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="0.33"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/mobils1" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ListView
+                    android:id="@+id/lvMobileMainActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <ListView
+                    android:id="@+id/lvLaptopMainActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <ListView
+                    android:id="@+id/lvCameraMainActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="176dp"
+        android:layout_height="62dp"
+        android:text="Exit"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.276"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></com.google.android.material.textfield.TextInputLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        tools:layout_editor_absoluteY="624dp" />
+</LinearLayout>

@@ -1,24 +1,22 @@
 package com.example.login_signup;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.login_signup.model.People;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginActivity extends AppCompatActivity {
+    DbManager db;
     private TextInputEditText edtUserNameLogin, edtPasswordLogin;
     private TextInputLayout edtUserNameLoginLayout, edtPasswordLoginLayout;
     private Button btnLogin;
     private Button btnSignUp;
-    DbManager db;
+    private Utils util;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,32 +28,29 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String userNameLogin = edtUserNameLogin.getText().toString().trim();
+                String userNameLogin = edtUserNameLogin.getText().toString().toLowerCase().trim();
                 String passwordLogin = edtPasswordLogin.getText().toString().trim();
                 People user = db.searchUser(userNameLogin);
                 if (user != null) {
                     if (user.getPassword().equals(passwordLogin)) {
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(intent);
+                        util.setSharedPreferences("isLogin", true);
+                        util.goToPage(LoginActivity.this, MainActivity.class);
                         finish();
                     }
                 } else {
-                    edtUserNameLoginLayout.setError("نام کاربری یا رمز عبور اشتباه است!");
-                    edtPasswordLoginLayout.setError("نام کاربری یا رمز عبور اشتباه است!");
+                    edtUserNameLoginLayout.setError(getString(R.string.user_pass));
+                    edtPasswordLoginLayout.setError(getString(R.string.user_pass));
                 }
             }
         });
-        btnSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
-                startActivity(intent);
-            }
+        btnSignUp.setOnClickListener(view -> {
+            util.goToPage(LoginActivity.this, SignUpActivity.class);
         });
 
     }
 
     private void SetupView() {
+        util = new Utils(LoginActivity.this);
         edtUserNameLogin = findViewById(R.id.edtUserNameLogin);
         edtPasswordLogin = findViewById(R.id.edtPasswordLogin);
         edtUserNameLoginLayout = findViewById(R.id.edtUserNameLoginLayout);

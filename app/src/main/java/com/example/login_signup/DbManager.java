@@ -5,9 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.Nullable;
-
-import java.util.ArrayList;
+import com.example.login_signup.model.People;
 
 public class DbManager extends SQLiteOpenHelper {
     public DbManager(Context context) {
@@ -27,6 +25,7 @@ public class DbManager extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
+
 
     public boolean addPerson(People person) {
         try {

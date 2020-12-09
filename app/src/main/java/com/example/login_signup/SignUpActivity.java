@@ -1,24 +1,23 @@
 package com.example.login_signup;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.login_signup.model.People;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class SignUpActivity extends AppCompatActivity {
+    DbManager db;
     private TextInputEditText edtUserNameSingUp, edtPasswordSignUp, edtPasswordReplace;
     private TextInputLayout edtUserNameSingUpLayout, edtPasswordSignUpLayout, edtPasswordReplaceLayout;
     private Button btnSignUp2;
     private Button btnBack;
-    DbManager db;
+    private Utils util;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +25,11 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_singup);
         SetupView();
         db = new DbManager(SignUpActivity.this);
-
+        util = new Utils(SignUpActivity.this);
         btnSignUp2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String userName = edtUserNameSingUp.getText().toString().trim();
+                String userName = edtUserNameSingUp.getText().toString().toLowerCase().trim();
                 String password = edtPasswordSignUp.getText().toString().trim();
                 String passwordReplace = edtPasswordReplace.getText().toString().trim();
 
@@ -90,8 +89,8 @@ public class SignUpActivity extends AppCompatActivity {
                 } else {
                     boolean flag = db.addPerson(new People(userName, password));
                     if (flag) {
-                        Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
-                        startActivity(intent);
+                        util.setSharedPreferences("isLogin", true);
+                        util.goToPage(SignUpActivity.this, MainActivity.class);
                         finish();
                     } else {
                         Toast.makeText(SignUpActivity.this, "Not...", Toast.LENGTH_SHORT).show();
@@ -102,8 +101,7 @@ public class SignUpActivity extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
-                startActivity(intent);
+                util.goToPage(SignUpActivity.this, SplashActivity.class);
             }
         });
     }

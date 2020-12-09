@@ -1,7 +1,7 @@
-package com.example.login_signup;
+package com.example.login_signup.model;
 
 public class People {
-    private long id;
+    private int id;
     private String userName;
     private String password;
 
@@ -13,7 +13,7 @@ public class People {
         this.password = password;
     }
 
-    public People(long id, String userName, String password) {
+    public People(int id, String userName, String password) {
         this.id = id;
         this.userName = userName;
         this.password = password;
@@ -23,7 +23,7 @@ public class People {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Login_Signup</string>
+    <string name="app_name">فروشگاه دیجیتال</string>
     <string name="login">ورود کاربران</string>
     <string name="enter_user">نام کاربری</string>
     <string name="enter_password">رمز عبور</string>
@@ -12,5 +12,10 @@
     <string name="error_username">نام کاربری باید بیش از پنج کاراکتر باشد</string>
     <string name="empty_field">لطفا فیلد را پر کنید</string>
     <string name="password_checked">مقدار فیلد های رمز عبور باید یکسان باشد</string>
+    <string name="user_pass">نام کاربری یا رمز عبور اشتباه است!</string>
     <string name="no_username">کاربری با این نام وجود ندارد</string>
+    <string name="loptop">لپ تاپ</string>
+    <string name="mobile">موبایل</string>
+    <string name="laptop">لپ تاپ</string>
+    <string name="camera">دوربین</string>
 </resources>
