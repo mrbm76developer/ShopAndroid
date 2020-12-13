@@ -1,15 +1,21 @@
-package com.example.login_signup;
+package com.example.login_signup.Engine;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.login_signup.Engine.RecyclerView.Adapter;
+
 public class Utils {
     private final Context context;
+    private final Activity activity;
 
-    public Utils(Context context) {
-        this.context = context;
+    public Utils(Context context, Activity activity) {
+        this.context = activity;
+        this.activity = activity;
     }
 
     public Object getSharedPreferences(String key, Object _default) {
@@ -46,8 +52,13 @@ public class Utils {
         editor.apply();
     }
 
-    public void goToPage(Activity activity, Class _class) {
-        Intent intent = new Intent(context, _class);
+    public void goToPage( Class _class) {
+        Intent intent = new Intent(context,_class);
         activity.startActivity(intent);
+    }
+    public void addRecyclerView(int recyclerViewId, RecyclerView.LayoutManager layoutManager, Adapter adapter) {
+        RecyclerView rc = activity.findViewById(recyclerViewId);
+       rc.setLayoutManager(layoutManager);
+       rc.setAdapter(adapter);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.login_signup;
+package com.example.login_signup.Activity;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -6,6 +6,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.login_signup.Engine.Utils;
+import com.example.login_signup.R;
 
 public class SplashActivity extends AppCompatActivity {
     private Button btnSplashLogin, btnSplashSignUp;
@@ -16,17 +19,17 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        util = new Utils(this);
+        util = new Utils(this, this);
         if ((Boolean) util.getSharedPreferences("isLogin", false))
-            util.goToPage(SplashActivity.this, MainActivity.class);
+            util.goToPage(MainActivity.class);
         setContentView(R.layout.activity_splash);
         SetupView();
         btnSplashLogin.setOnClickListener(View -> {
-            util.goToPage(SplashActivity.this, LoginActivity.class);
+            util.goToPage(LoginActivity.class);
             finish();
         });
         btnSplashSignUp.setOnClickListener(View -> {
-            util.goToPage(SplashActivity.this, SignUpActivity.class);
+            util.goToPage(SignUpActivity.class);
             finish();
         });
     }

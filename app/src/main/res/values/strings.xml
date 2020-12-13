@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">فروشگاه دیجیتال</string>
+    <string name="app_name">Shop Digital</string>
     <string name="login">ورود کاربران</string>
     <string name="enter_user">نام کاربری</string>
     <string name="enter_password">رمز عبور</string>

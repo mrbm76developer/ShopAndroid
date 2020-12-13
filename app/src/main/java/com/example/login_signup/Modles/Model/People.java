@@ -1,4 +1,4 @@
-package com.example.login_signup.model;
+package com.example.login_signup.Modles.Model;
 
 public class People {
     private int id;

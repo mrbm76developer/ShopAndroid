@@ -1,4 +1,4 @@
-package com.example.login_signup;
+package com.example.login_signup.Activity;
 
 import android.os.Bundle;
 import android.view.View;
@@ -6,7 +6,10 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.login_signup.model.People;
+import com.example.login_signup.Modles.DbManager;
+import com.example.login_signup.Modles.Model.People;
+import com.example.login_signup.R;
+import com.example.login_signup.Engine.Utils;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -34,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (user != null) {
                     if (user.getPassword().equals(passwordLogin)) {
                         util.setSharedPreferences("isLogin", true);
-                        util.goToPage(LoginActivity.this, MainActivity.class);
+                        util.goToPage( MainActivity.class);
                         finish();
                     }
                 } else {
@@ -44,13 +47,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
         btnSignUp.setOnClickListener(view -> {
-            util.goToPage(LoginActivity.this, SignUpActivity.class);
+            util.goToPage( SignUpActivity.class);
         });
 
     }
 
     private void SetupView() {
-        util = new Utils(LoginActivity.this);
+        util = new Utils(this,LoginActivity.this);
         edtUserNameLogin = findViewById(R.id.edtUserNameLogin);
         edtPasswordLogin = findViewById(R.id.edtPasswordLogin);
         edtUserNameLoginLayout = findViewById(R.id.edtUserNameLoginLayout);

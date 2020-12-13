@@ -1,4 +1,4 @@
-package com.example.login_signup;
+package com.example.login_signup.Activity;
 
 import android.os.Bundle;
 import android.view.View;
@@ -7,7 +7,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.login_signup.model.People;
+import com.example.login_signup.Engine.Utils;
+import com.example.login_signup.Modles.DbManager;
+import com.example.login_signup.Modles.Model.People;
+import com.example.login_signup.R;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -25,7 +28,7 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_singup);
         SetupView();
         db = new DbManager(SignUpActivity.this);
-        util = new Utils(SignUpActivity.this);
+        util = new Utils(this, SignUpActivity.this);
         btnSignUp2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,7 +93,7 @@ public class SignUpActivity extends AppCompatActivity {
                     boolean flag = db.addPerson(new People(userName, password));
                     if (flag) {
                         util.setSharedPreferences("isLogin", true);
-                        util.goToPage(SignUpActivity.this, MainActivity.class);
+                        util.goToPage(MainActivity.class);
                         finish();
                     } else {
                         Toast.makeText(SignUpActivity.this, "Not...", Toast.LENGTH_SHORT).show();
@@ -101,7 +104,7 @@ public class SignUpActivity extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                util.goToPage(SignUpActivity.this, SplashActivity.class);
+                util.goToPage(SplashActivity.class);
             }
         });
     }

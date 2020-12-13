@@ -1,11 +1,11 @@
-package com.example.login_signup;
+package com.example.login_signup.Modles;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.login_signup.model.People;
+import com.example.login_signup.Modles.Model.People;
 
 public class DbManager extends SQLiteOpenHelper {
     public DbManager(Context context) {
