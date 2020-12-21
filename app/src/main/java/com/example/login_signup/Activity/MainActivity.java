@@ -25,15 +25,15 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private Button btn1;
-    private Utils util;
-    private ImageSlider imgSliderMainActivity;
-    private RecyclerView rvTitleMainActivity;
     private final Product[] products = new Product[12];
     private final Kala[] kalas = new Kala[3];
     private final String urlMobileTitle = "https://cdn.pocket-lint.com/r/s/1200x/assets/images/120309-phones-buyer-s-guide-best-smartphones-2020-the-top-mobile-phones-available-to-buy-today-image1-eagx1ykift.jpg";
     private final String urlLaptopTitle = "https://cdn.pocket-lint.com/r/s/1200x/assets/images/120309-phones-buyer-s-guide-best-smartphones-2020-the-top-mobile-phones-available-to-buy-today-image1-eagx1ykift.jpg";
     private final String urlCameraTitle = "https://cdn.pocket-lint.com/r/s/1200x/assets/images/120309-phones-buyer-s-guide-best-smartphones-2020-the-top-mobile-phones-available-to-buy-today-image1-eagx1ykift.jpg";
+    private Button btn1;
+    private Utils util;
+    private ImageSlider imgSliderMainActivity;
+    private RecyclerView rvTitleMainActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         util = new Utils(this, MainActivity.this);
         setupView();
         showImageSlider(imgSliderMainActivity);
-       // clickItemImageSlider(imgSliderMainActivity);
+        // clickItemImageSlider(imgSliderMainActivity);
         btn1.setOnClickListener(view -> {
             util.setSharedPreferences("isLogin", false);
             util.goToPage(SplashActivity.class);
@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
         rvTitleMainActivity(util);
 
     }
-
 
     private void rvTitleMainActivity(Utils util) {
         util.addRecyclerView(R.id.rvTitleMainActivity, new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true),
@@ -65,16 +64,6 @@ public class MainActivity extends AppCompatActivity {
                 }));
     }
 
-//    private void clickItemImageSlider(ImageSlider imageSlider) {
-//        imageSlider.setItemClickListener(new ItemClickListener() {
-//            @Override
-//            public void onItemSelected(int i) {
-//                Toast.makeText(MainActivity.this, imageSlider.g+"", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//    }
-
     private void showImageSlider(ImageSlider imageSlider) {
         ArrayList<SlideModel> slideModels = new ArrayList<>();
         slideModels.add(new SlideModel(R.drawable.mobils1, getString(R.string.mobile)));
@@ -84,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         imageSlider.setItemClickListener(new ItemClickListener() {
             @Override
             public void onItemSelected(int i) {
-                Toast.makeText(MainActivity.this, slideModels.get(i)+"", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, slideModels.get(i) + "", Toast.LENGTH_SHORT).show();
             }
         });
 
