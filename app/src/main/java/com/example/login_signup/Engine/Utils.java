@@ -56,8 +56,8 @@ public class Utils {
         Intent intent = new Intent(context,_class);
         activity.startActivity(intent);
     }
-    public void addRecyclerView(int recyclerViewId, RecyclerView.LayoutManager layoutManager, Adapter adapter) {
-        RecyclerView rc = activity.findViewById(recyclerViewId);
+    public void addRecyclerView(RecyclerView recyclerViewId, RecyclerView.LayoutManager layoutManager, Adapter adapter) {
+        RecyclerView rc = recyclerViewId;
        rc.setLayoutManager(layoutManager);
        rc.setAdapter(adapter);
     }
