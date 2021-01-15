@@ -16,6 +16,15 @@ public class FragmentCategory extends Fragment {
 
     }
 
+    public static FragmentCategory newInstance() {
+        return new FragmentCategory();
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

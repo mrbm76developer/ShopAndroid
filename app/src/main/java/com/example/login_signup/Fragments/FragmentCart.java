@@ -17,6 +17,14 @@ public class FragmentCart extends Fragment {
 
     }
 
+    public static FragmentCart newInstance() {
+        return new FragmentCart();
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

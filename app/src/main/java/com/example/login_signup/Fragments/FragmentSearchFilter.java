@@ -15,6 +15,15 @@ public class FragmentSearchFilter extends Fragment {
 
     }
 
+    public static FragmentSearchFilter newInstance() {
+        return new FragmentSearchFilter();
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

@@ -14,8 +14,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:gravity="center"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center">
 
         <TextView
             android:id="@+id/txtRvLatestProductNameKalaFragmentHome"
@@ -24,7 +24,7 @@
             android:layout_marginTop="4dp"
             android:gravity="center"
             android:text="Mobile: "
-            android:textColor="#000" />
+            android:textColor="#fff" />
 
         <TextView
             android:id="@+id/txtRvLatestProductNameProductFragmentHome"
@@ -33,7 +33,7 @@
             android:layout_marginTop="4dp"
             android:gravity="center"
             android:text="MacBook Pro 2020"
-            android:textColor="#000"
+            android:textColor="#fff"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -48,7 +48,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:gravity="center"
-            android:text="20,000,000" />
+            android:text="20,000,000"
+            android:textColor="#fff" />
 
         <TextView
             android:id="@+id/txtRvLatestProductOffPriceFragmentHome"
@@ -68,5 +69,9 @@
         android:layout_marginTop="4dp"
         android:gravity="center"
         android:text="16,000,000"
-        android:textColor="#000" />
+        android:textColor="#fff" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
 </LinearLayout>

@@ -5,9 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.login_signup.Engine.RecyclerView.Adapter;
+import com.example.login_signup.Fragments.FragmentHome;
 
 public class Utils {
     private final Context context;
@@ -60,5 +65,12 @@ public class Utils {
         RecyclerView rc = recyclerViewId;
        rc.setLayoutManager(layoutManager);
        rc.setAdapter(adapter);
+    }
+    public boolean openFragment(Fragment fragment, int container) {
+        FragmentTransaction transaction = ((AppCompatActivity)activity).getSupportFragmentManager().beginTransaction();
+        transaction.replace(container,fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+        return true;
     }
 }

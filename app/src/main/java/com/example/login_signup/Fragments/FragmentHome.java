@@ -1,5 +1,6 @@
 package com.example.login_signup.Fragments;
 
+import android.content.Context;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -36,21 +37,31 @@ public class FragmentHome extends Fragment {
     private ImageSlider imgSliderFragmentHome;
     private RecyclerView rvTitleHomeFragment, rvMostSeenFragmentHome, rvLatestProductFragmentHome;
     private Toolbar toolbarFragmentHome;
+    private final Context context;
 
-    public FragmentHome() {
+    public FragmentHome(Context context) {
+        this.context = context;
+    }
 
+    public static FragmentHome newInstance(Context context) {
+        return new FragmentHome(context);
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        FillItem();
+        super.onCreate(savedInstanceState);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        FillItem();
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         setupView(view);
         Utils util = new Utils(getActivity(), getActivity());
         showImageSlider(imgSliderFragmentHome);
         setRvTitleFragmentHome(util);
         setRvMostSeen(util);
-
+        setRvLatestProduct(util);
         return view;
     }
 
@@ -75,18 +86,18 @@ public class FragmentHome extends Fragment {
             }
         });
         util.addRecyclerView(rvMostSeenFragmentHome, new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, true),
-                new Adapter(getActivity(), R.layout.recycler_view_most_seen, 8, (RecyclerViewMethod) (holder, position, itemView) -> {
-                    ImageView imgRvItemMobileFragmentHome = (ImageView) itemView.findViewById(R.id.imgRvItemMobileFragmentHome);
-                    TextView txtPriceMain = (TextView) itemView.findViewById(R.id.txtRvPriceMainFragmentHome);
-                    TextView txtNameKala = (TextView) itemView.findViewById(R.id.txtRvtNameKalaFragmentHome);
-                    TextView txtNameProduct = (TextView) itemView.findViewById(R.id.txtRvNameProductFragmentHome);
-                    TextView txtOffPrice = (TextView) itemView.findViewById(R.id.txtRvOffPriceFragmentHome);
-                    TextView txtFinalPrice = (TextView) itemView.findViewById(R.id.txtRvFinalPriceFragmentHome);
+                new Adapter(getActivity(), R.layout.recycler_view_most_seen, 8, (holder, position, itemView) -> {
+                    ImageView imgRvItemMobileFragmentHome = itemView.findViewById(R.id.imgRvItemMobileFragmentHome);
+                    TextView txtPriceMain = itemView.findViewById(R.id.txtRvPriceMainFragmentHome);
+                    TextView txtNameKala = itemView.findViewById(R.id.txtRvtNameKalaFragmentHome);
+                    TextView txtNameProduct = itemView.findViewById(R.id.txtRvNameProductFragmentHome);
+                    TextView txtOffPrice = itemView.findViewById(R.id.txtRvOffPriceFragmentHome);
+                    TextView txtFinalPrice = itemView.findViewById(R.id.txtRvFinalPriceFragmentHome);
                     txtPriceMain.setPaintFlags(txtPriceMain.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                     txtNameKala.setText(products[position].getKala().getTitle() + " :");
                     txtNameProduct.setText(products[position].getName());
                     txtOffPrice.setText(products[position].getOff() + "%");
-                    long totalPrice = (long) products[position].getPrice() - (long) ((long) products[position].getPrice() * (long) products[position].getOff());
+                    long totalPrice = (long) products[position].getPrice() - ((long) products[position].getPrice() * (long) products[position].getOff());
                     txtFinalPrice.setText(totalPrice + "");
                     txtPriceMain.setText(products[position].getPrice() + "");
                     Picasso.get().load(products[position].getImageAddress()).into(imgRvItemMobileFragmentHome);
@@ -94,6 +105,7 @@ public class FragmentHome extends Fragment {
 
                 }));
     }
+
     private void setRvLatestProduct(Utils util) {
         final Product[] product = this.products.clone();
         Arrays.sort(products, new Comparator<Product>() {
@@ -103,18 +115,18 @@ public class FragmentHome extends Fragment {
             }
         });
         util.addRecyclerView(rvLatestProductFragmentHome, new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, true),
-                new Adapter(getActivity(), R.layout.recycler_view_latest_product, 8, (RecyclerViewMethod) (holder, position, itemView) -> {
-                    ImageView imgRvItemMobileFragmentHome = (ImageView) itemView.findViewById(R.id.imgRvLatestProductItemMobileFragmentHome);
-                    TextView txtPriceMain = (TextView) itemView.findViewById(R.id.txtRvLatestProductPriceMainFragmentHome);
-                    TextView txtNameKala = (TextView) itemView.findViewById(R.id.txtRvLatestProductNameKalaFragmentHome);
-                    TextView txtNameProduct = (TextView) itemView.findViewById(R.id.txtRvLatestProductNameProductFragmentHome);
-                    TextView txtOffPrice = (TextView) itemView.findViewById(R.id.txtRvLatestProductOffPriceFragmentHome);
-                    TextView txtFinalPrice = (TextView) itemView.findViewById(R.id.txtRvLatestProductFinalPriceFragmentHome);
+                new Adapter(getActivity(), R.layout.recycler_view_latest_product, 8, (holder, position, itemView) -> {
+                    ImageView imgRvItemMobileFragmentHome = itemView.findViewById(R.id.imgRvLatestProductItemMobileFragmentHome);
+                    TextView txtPriceMain = itemView.findViewById(R.id.txtRvLatestProductPriceMainFragmentHome);
+                    TextView txtNameKala = itemView.findViewById(R.id.txtRvLatestProductNameKalaFragmentHome);
+                    TextView txtNameProduct = itemView.findViewById(R.id.txtRvLatestProductNameProductFragmentHome);
+                    TextView txtOffPrice = itemView.findViewById(R.id.txtRvLatestProductOffPriceFragmentHome);
+                    TextView txtFinalPrice = itemView.findViewById(R.id.txtRvLatestProductFinalPriceFragmentHome);
                     txtPriceMain.setPaintFlags(txtPriceMain.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                     txtNameKala.setText(products[position].getKala().getTitle() + " :");
                     txtNameProduct.setText(products[position].getName());
                     txtOffPrice.setText(products[position].getOff() + "%");
-                    long totalPrice = (long) products[position].getPrice() - (long) ((long) products[position].getPrice() * (long) products[position].getOff());
+                    long totalPrice = (long) products[position].getPrice() - ((long) products[position].getPrice() * (long) products[position].getOff());
                     txtFinalPrice.setText(totalPrice + "");
                     txtPriceMain.setText(products[position].getPrice() + "");
                     Picasso.get().load(products[position].getImageAddress()).into(imgRvItemMobileFragmentHome);

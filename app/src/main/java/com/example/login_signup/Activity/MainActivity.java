@@ -1,11 +1,10 @@
 package com.example.login_signup.Activity;
 
 import android.os.Bundle;
-import android.view.MenuItem;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.login_signup.Engine.Utils;
 import com.example.login_signup.Fragments.FragmentAccount;
 import com.example.login_signup.Fragments.FragmentCart;
 import com.example.login_signup.Fragments.FragmentCategory;
@@ -15,39 +14,30 @@ import com.example.login_signup.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
+    Utils util;
     private BottomNavigationView btnNav;
-    FragmentHome home = new FragmentHome();
-    FragmentAccount account = new FragmentAccount();
-    FragmentCart cart = new FragmentCart();
-    FragmentCategory category = new FragmentCategory();
-    FragmentSearchFilter searchFilter = new FragmentSearchFilter();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setupView();
-
         btnNav.setSelectedItemId(R.id.item_home);
-        getSupportFragmentManager().beginTransaction().add(R.id.frmMainActivity,home).commit();
+        util.openFragment(FragmentHome.newInstance(MainActivity.this), R.id.frmMainActivity);
         btnNav.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.item_home:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frmMainActivity, home).commit();
-                    break;
+                    return util.openFragment(FragmentHome.newInstance(MainActivity.this), R.id.frmMainActivity);
                 case R.id.item_account:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frmMainActivity, account).commit();
-                    break;
+                    return util.openFragment(FragmentAccount.newInstance(), R.id.frmMainActivity);
                 case R.id.item_cart:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frmMainActivity, cart).commit();
-                    break;
+                    return util.openFragment(FragmentCart.newInstance(), R.id.frmMainActivity);
                 case R.id.item_category:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frmMainActivity, category).commit();
-                    break;
+                    return util.openFragment(FragmentCategory.newInstance(), R.id.frmMainActivity);
                 case R.id.item_search:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frmMainActivity, searchFilter).commit();
-                    break;
+                    return util.openFragment(FragmentSearchFilter.newInstance(), R.id.frmMainActivity);
             }
-            return true;
+            return false;
         });
 
 
@@ -64,5 +54,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupView() {
         btnNav = findViewById(R.id.btnNav);
+        util = new Utils(MainActivity.this, MainActivity.this);
     }
 }
